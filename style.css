@@ -1,0 +1,172 @@
+*{
+    font-family: "Lemon Milk";
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: radial-gradient(circle, #F573A1, #E8B7D4, #E8B7D4, #7FACD6);
+}
+
+.app{
+    color: white;
+    text-shadow: 0 15px 40px -20px #8474A1;
+    background: #8474A130;
+    box-shadow: 0 15px 40px -20px black;
+    width: 442px;
+    padding: 30px;
+    border-radius: 25px;
+}
+
+form{
+    background: #FFFFFF70;
+    width: 440;
+    height: 50px;
+    border-radius: 30px;
+}
+
+form input{
+    background: transparent;
+    border: none;
+    border-radius: 30px;
+    padding: 16px 130px 16px 20px;
+}
+
+form input::placeholder{
+    color: #8474A1;
+    font-size: 16px;
+}
+
+form button{
+    background: #8474A170 ;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 10px 10px 10px;
+    transition-duration: 0.4s;
+
+
+}
+  
+form button:hover {
+    background-color: #F573A1; 
+    color: white;
+    cursor: pointer;
+}
+
+ul#item-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item-container{
+    background: #FFFFFF70;
+    border: none;
+    border-radius: 30px;
+    width: 440;
+    height: 49px;
+    margin-bottom: 16px;
+}
+
+ul span{
+    display: inline-block;
+    position: relative;
+    top: -46px;
+    background: transparent;
+    border: none;
+    border-radius: 30px;
+    color: #8474A1;
+    font-size: 16px;
+    width: 230px;
+}
+
+.item-container .edit-button{
+    position: relative;
+    top: -46px;
+    left: 20px;
+    background: #8474A170 ;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 10px 10px 10px;
+    transition-duration: 0.4s;
+}
+
+.item-container .remove-button{
+    position: relative;
+    top: -46px;
+    left: 26px;
+    background: #8474A170 ;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 10px 10px 10px;
+    transition-duration: 0.4s;
+}
+
+ul .edit-button:hover {
+    background-color: #F573A1; 
+    color: white;
+    box-shadow: 0 15px 40px -20px black;
+    cursor: pointer;
+}
+
+ul .remove-button:hover {
+    background-color: #F573A1; 
+    color: white;
+    box-shadow: 0 15px 40px -20px black;
+    cursor: pointer;
+}
+  
+ul input[type="checkbox"] {
+    opacity: transparent;
+    position: relative;
+  }
+  
+ul#item-list li .custom-checkbox {
+    position: relative;
+    top: -13px;
+    left: 8px;
+    margin: 20px 16px 20px 0px ;
+    height: 20px;
+    width: 20px;
+    padding: 8px 8px 8px 8px;
+    background: #eee;
+    border-radius: 50%;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+  
+ul#item-list li .custom-checkbox.checked {
+    background: #F573A1;
+    box-shadow: 0 15px 40px -20px black;
+    cursor: pointer;
+}
+
+
+.dark-mode{
+    background-image: radial-gradient(circle, #474973, #161b33, #0d0c1d); 
+    color: white;
+}
+
+.dark-button{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: #8474A170 ;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 10px 10px 10px;
+    transition-duration: 0.4s;
+}
+
+.dark-button:hover{
+    background-color: #161b33; 
+    color: white;
+    box-shadow: 0 15px 40px -20px black;
+    cursor: pointer;
+}
