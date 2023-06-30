@@ -4,23 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de compras</title>
+    <title>Minha Lista de Compras</title>
 </head>
-<link rel="stylesheet" href="https://boxicons.com/">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="style.css">
 <body>
-  <button class="dark-button" onclick="darkmode()">Modo Escuro</button>
-    <div class="app">
-  <h1>Minha Lista de Compras</h1>
-  
-    <form id="shopping-form">
-      <input type="text" id="item-input" placeholder="Adicione seus itens">
-      <button type="submit">Add Item</button>
-    </form>
-  
-    <h2>Itens:</h2>
-    <ul id="item-list"></ul>
-   </div>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
+    <div class="head">
+        <h1>Minha Lista de Compras</h1>
+        <h2>App by MMA Team</h2>
+    </div>
+
+    <div class="input-container">
+        <label for="produto">Produto</label>
+        <input class="produto-input" type="text" id="produto" placeholder="Insira aqui seu produto">
+
+        <label for="preço">Preço</label>
+        <input class="preço-input" type="number" id="preço" placeholder="Insira aqui o valor do produto">
+        
+        <p>O produto é:</p>
+        <div class="checkboxes">
+            <label for="prioridade">Prioridade</label>
+            <input class="prioridade-checkbox" type="checkbox" id="prioridade">
+
+            <label for="normal">Normal</label>
+            <input class="normal-checkbox" type="checkbox" id="normal">
+        </div>
+        <button type="submit" onclick="addItems()">Add Item</button>
+    </div>
+    
+    <div class="list-container">
+        <div class="priority">
+            <h2>Prioridade</h2>
+            <ul id="priority-list">
+                <span id="span"></span>
+            </ul>
+        </div>
+
+        <div class="not-bought">
+            <h2>Itens ainda não comprados</h2>
+            <ul id="toBuy-list"></ul>
+        </div>
+
+        <div class="bought">
+            <h2>Itens já comprados</h2>
+            <ul id="bought-list"></ul>
+        </div>
+    </div>
 </body>
 </html>
