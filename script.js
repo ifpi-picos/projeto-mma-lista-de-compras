@@ -65,20 +65,30 @@ function displayLists() {
         
         // coloca o botão de comprar no item
         listItem.appendChild(markButton);
-        
-        // Criar o botão pra editar o item
-        let editButton = document.createElement("button");
-        editButton.textContent = "Edit";
-        
-        // coloque um event listener pra editar o item
-        editButton.addEventListener("click", function() {
-            // Implement your logic for editing the item here
-            // For simplicity, let's just log a message for now
-            console.log("Editing item: " + item.produto);
-        });
-        
-        // coloca o botão de editar o item
-        listItem.appendChild(editButton);
+
+        // Cria a label pro item
+        let label = document.createElement("label");
+        label.textContent = item.produto + ", " + item.preço;
+                        
+        // coloca a label no item
+        listItem.appendChild(label);
+
+        // coloca o item na lista correspondente
+        if (item.prioridade === "Prioridade") {
+            priorityList.appendChild(listItem);
+        } else if (item.bought) {
+            boughtList.appendChild(listItem);
+        } else {
+             toBuyList.appendChild(listItem);
+        }
+
+       // Create edit button
+       const editButton = document.createElement('button');
+       editButton.addEventListener('click', editaritens(itens) ,function () {
+         if (newText !== null) {
+           itemText.innerText = newText;
+         }
+       });
         
         // Cria o botão pra remover o item
         let removeButton = document.createElement("button");
@@ -86,30 +96,24 @@ function displayLists() {
         
         // Coloca um event listener pra remover o item
         removeButton.addEventListener("click", function() {
-            // Remove o item do itemList array
-            itemList.splice(index, 1);
-            
-            // Atualiza as listas
-            displayLists();
+            itemList.splice(index, 1); // Remove o item do itemList array
+            displayLists(); // Atualiza as listas
         });
         
         // coloca o botão de remover itens ao item na lista
         listItem.appendChild(removeButton);
-        
-        // Cria a label pro item
-        let label = document.createElement("label");
-        label.textContent = item.produto + ", " + item.preço;
-        
-        // coloca a label no item
-        listItem.appendChild(label);
-        
-        // coloca o item na lista correspondente
-        if (item.prioridade === "Prioridade") {
-            priorityList.appendChild(listItem);
-        } else if (item.bought) {
-            boughtList.appendChild(listItem);
-        } else {
-            toBuyList.appendChild(listItem);
-        }
+    
     });
 }
+
+function editaritens() {
+    // Preencher os campos de entrada com os valores do livro selecionado
+    produtoInput.value = book.title;
+    precoInput.value = book.author;
+  
+    // Remover o livro da lista
+    itemList = itemList.filter((item) => item !== item);
+  
+    // Atualizar a lista de livros
+    displayLists();
+  }
