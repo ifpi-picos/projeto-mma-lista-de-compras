@@ -15,7 +15,7 @@
         <h2>App by MMA Team</h2>
         <div class="theme-select">
             <p class="themes">Temas
-                <select id="sort-by">
+                <select class="select" id="sort-by">
                     <option value="light">Tema claro</option>
                     <option value="dark">Tema escuro</option>
                     <option value="sunset">Tema sunset</option>
@@ -26,10 +26,10 @@
     </div>
 
     <div class="input-container">
-        <label for="produto">Produto</label>
+        <label class="produto-label" for="produto">Produto</label>
         <input class="produto-input" type="text" id="produto" placeholder="Insira aqui seu produto">
 
-        <label for="preço">Preço</label>
+        <label class="preço-label" for="preço">Preço</label>
         <input class="preço-input" type="number" id="preço" placeholder="Insira aqui o valor do produto">
         
         <p>O produto é:</p>
@@ -41,27 +41,23 @@
             <input class="normal-checkbox" type="radio" id="normal">
             <br>
         </div>
-        <button class="add-button" type="submit" onclick="addItems()">Add Item
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="17.5" cy="19.5" r="1.5"></circle><path d="M13 13h2v-2.99h2.99v-2H15V5.03h-2v2.98h-2.99v2H13V13z"></path><path d="M10 17h8a1 1 0 0 0 .93-.64L21.76 9h-2.14l-2.31 6h-6.64L6.18 4.23A2 2 0 0 0 4.33 3H2v2h2.33l4.75 11.38A1 1 0 0 0 10 17z"></path></svg>
-        </button>
+        <button class="add-button" type="submit" onclick="addItems()">Adicionar Item</button>
     </div>
     
     <div class="list-container">
         <div class="priority">
-            <h2>Prioridade</h2>
-            <ul id="priority-list">
-                <span id="span"></span>
-            </ul>
+            <h2 class="prioridade-lista">Prioridade</h2>
+            <ul class="item-list" id="priority-list"></ul>
         </div>
 
         <div class="not-bought">
-            <h2>Itens ainda não comprados</h2>
-            <ul id="toBuy-list"></ul>
+            <h2 class="normal-lista">Itens ainda não comprados</h2>
+            <ul class="item-list" id="toBuy-list"></ul>
         </div>
 
         <div class="bought">
-            <h2>Itens já comprados</h2>
-            <ul id="bought-list"></ul>
+            <h2 class="comprado-lista">Itens já comprados</h2>
+            <ul class="item-list" id="bought-list"></ul>
         </div>
     </div>
 </body>
