@@ -8,13 +8,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #abb6c8;
-    color: #5d7599;
+    background-color: #fd8d71;
+    color: #ffdca2;
     border-radius: 0px 0px 20px 20px;
 }
 
 body{
-    background-color: #DADADA;
+    background-color: #ffdca2;
 }
 
 .theme-select{
@@ -24,9 +24,9 @@ body{
 }
 
 .input-container{
-    color: #5d7599;
+    color: #fe676e;
     margin: 10px;
-    background-color: #c2c4c6;
+    background-color: #ffbd71;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,7 +35,7 @@ body{
     padding: 20px 15px;
     border-radius: 20px;
     float: left;
-    box-shadow: 0 15px 40px -20px #5d7599;
+    box-shadow: 0 15px 40px -20px #fe676e;
 }
 
 .produto-input{
@@ -67,7 +67,7 @@ body{
 }
 
 .add-button{
-    color: #5d7599;
+    color: #fe676e;
     background-color: #f7f0c6;
     min-width: 90%;
     min-height: 20px;
@@ -81,8 +81,8 @@ svg{
 }
 
 .list-container{
-    color: #5d7599;
-    background-color: #c2c4c6;
+    color: #fe676e;
+    background-color: #ffbd71;
     display: flex;
     flex-direction: row;
     justify-content: center;
