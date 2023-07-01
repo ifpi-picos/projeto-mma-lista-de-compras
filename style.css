@@ -1,10 +1,20 @@
+*{
+    font-family: lemon milk;
+}
+
 .head{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: gray;
+    background-color: #abb6c8;
+    color: #5d7599;
+    border-radius: 0px 0px 20px 20px;
+}
+
+body{
+    background-color: #DADADA;
 }
 
 .theme-select{
@@ -14,35 +24,92 @@
 }
 
 .input-container{
+    color: #5d7599;
+    margin: 10px;
+    background-color: #c2c4c6;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    max-width: 30%;
+    padding: 20px 15px;
+    border-radius: 20px;
     float: left;
+    box-shadow: 0 15px 40px -20px #5d7599;
+}
+
+.produto-input{
+    background-color: #f7f0c6;
+    min-width: 90%;
+    min-height: 20px;
+    border: none;
+    padding: 8px;
+    border-radius: 3px
+}
+
+.preço-input{
+    background-color: #f7f0c6;
+    min-width: 90%;
+    min-height: 20px;
+    border: none;
+    padding: 8px;
+    border-radius: 3px
+}
+
+.prioridade-checkbox{
+    width: 20px;
+    height: 20px;
+}
+
+.normal-checkbox{
+    width: 20px;
+    height: 20px;
+}
+
+.add-button{
+    color: #5d7599;
+    background-color: #f7f0c6;
+    min-width: 90%;
+    min-height: 20px;
+    border: none;
+    padding: 8px;
+    border-radius: 3px
+}
+
+svg{
+    fill: #5d7599;
 }
 
 .list-container{
+    color: #5d7599;
+    background-color: #c2c4c6;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 70%;
     float: right;
+    margin: 10px;
+    border-radius: 20px;
 }
 
 .checkboxes{
     flex-direction: row;
+    align-items: center;
 }
 
 .priority{
-    margin: 5px 10px 5px 10px;
+    width: 33,3%;
+    margin: 5px 20px 5px 20px;
 }
 
 .not-bought{
-    margin: 5px 10px 5px 10px;
+    width: 33,3%;
+    margin: 5px 20px 5px 20px;
 }
 
 .bought{
-    margin: 5px 10px 5px 10px;
+    margin: 5px 20px 5px 20px;
+    width: 33,3%;
+    margin: 5px 20px 5px 20px;
 }

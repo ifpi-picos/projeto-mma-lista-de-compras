@@ -19,7 +19,7 @@ function addItems() {
   if (produto.trim() === '' || preco.trim() === '') {
     alert('Por favor, preencha todos os campos.');
     return;
-  };
+  }
 
   const item = {
     produto,
@@ -36,6 +36,10 @@ function addItems() {
   // Limpar os campos de entrada
   produtoInput.value = '';
   precoInput.value = '';
+
+  // Limpar os campos de seleção de rádio
+  priorityCheckbox.checked = false;
+  normalCheckbox.checked = false;
 
   // Chamar a função para mostrar os itens nas listas
   showItems();
