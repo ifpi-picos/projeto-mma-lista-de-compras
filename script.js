@@ -1,6 +1,11 @@
-let itemList = []; // Array pra armazenar os items
+// Variável que armazena os itens da lista
+let itemList = {
+  priority: [],
+  toBuy: [],
+  bought: []
+};
 
-// Função para adicionar itens à lista em formato de array e salvar no localStorage
+// Função para adicionar itens à lista em formato de array
 function addItems() {
   const produtoInput = document.querySelector('.produto-input');
   const precoInput = document.querySelector('.preço-input');
@@ -14,19 +19,7 @@ function addItems() {
   if (produto.trim() === '' || preco.trim() === '') {
     alert('Por favor, preencha todos os campos.');
     return;
-  }
-
-  // Obter a lista de itens do localStorage
-  let itemList = localStorage.getItem('shoppingList');
-  if (itemList) {
-    itemList = JSON.parse(itemList);
-  } else {
-    itemList = {
-      priority: [],
-      toBuy: [],
-      bought: []
-    };
-  }
+  };
 
   const item = {
     produto,
@@ -39,9 +32,6 @@ function addItems() {
   } else {
     itemList.toBuy.push(item);
   }
-
-  // Salvar a lista atualizada no localStorage
-  localStorage.setItem('shoppingList', JSON.stringify(itemList));
 
   // Limpar os campos de entrada
   produtoInput.value = '';
@@ -62,83 +52,77 @@ function showItems() {
   toBuyList.innerHTML = '';
   boughtList.innerHTML = '';
 
-  // Obter a lista de itens do localStorage
-  const itemList = localStorage.getItem('shoppingList');
-  if (itemList) {
-    const { priority, toBuy, bought } = JSON.parse(itemList);
+  const { priority, toBuy, bought } = itemList;
 
-    // Função para criar o botão de remoção de item
-    function createRemoveButton(item, list) {
-      const removeButton = document.createElement('button');
-      removeButton.innerText = 'Remover';
-      removeButton.addEventListener('click', () => {
-        const index = list.indexOf(item);
-        if (index !== -1) {
-          list.splice(index, 1);
-          localStorage.setItem('shoppingList', JSON.stringify(itemList));
-          showItems();
-        }
-      });
-      return removeButton;
-    }
-
-    // Função para criar o botão de reedição de item
-    function createEditButton(item, list) {
-      const editButton = document.createElement('button');
-      editButton.innerText = 'Editar';
-      editButton.addEventListener('click', () => {
-        const produtoInput = document.querySelector('.produto-input');
-        const precoInput = document.querySelector('.preço-input');
-        const priorityCheckbox = document.querySelector('.prioridade-checkbox');
-        const normalCheckbox = document.querySelector('.normal-checkbox');
-
-        produtoInput.value = item.produto;
-        precoInput.value = item.preco;
-        priorityCheckbox.checked = list === priority;
-        normalCheckbox.checked = list === toBuy;
-
-        const index = list.indexOf(item);
-        if (index !== -1) {
-          list.splice(index, 1);
-          localStorage.setItem('shoppingList', JSON.stringify(itemList));
-          showItems();
-        }
-      });
-      return editButton;
-    }
-
-    // Exibir os itens em cada lista
-    priority.forEach((item) => {
-      const listItem = document.createElement('li');
-      const removeButton = createRemoveButton(item, priority);
-      const editButton = createEditButton(item, priority);
-      listItem.textContent = item.produto;
-      listItem.appendChild(editButton);
-      listItem.appendChild(removeButton);
-      priorityList.appendChild(listItem);
+  // Função para criar o botão de remoção de item
+  function createRemoveButton(item, list) {
+    const removeButton = document.createElement('button');
+    removeButton.innerText = 'Remover';
+    removeButton.addEventListener('click', () => {
+      const index = list.indexOf(item);
+      if (index !== -1) {
+        list.splice(index, 1);
+        showItems();
+      }
     });
-
-    toBuy.forEach((item) => {
-      const listItem = document.createElement('li');
-      const removeButton = createRemoveButton(item, toBuy);
-      const editButton = createEditButton(item, toBuy);
-      listItem.textContent = item.produto;
-      listItem.appendChild(editButton);
-      listItem.appendChild(removeButton);
-      toBuyList.appendChild(listItem);
-    });
-
-    bought.forEach((item) => {
-      const listItem = document.createElement('li');
-      const removeButton = createRemoveButton(item, bought);
-      const editButton = createEditButton(item, bought);
-      listItem.textContent = item.produto;
-      listItem.appendChild(editButton);
-      listItem.appendChild(removeButton);
-      boughtList.appendChild(listItem);
-    });
+    return removeButton;
   }
+
+  // Função para criar o botão de reedição de item
+  function createEditButton(item, list) {
+    const editButton = document.createElement('button');
+    editButton.innerText = 'Editar';
+    editButton.addEventListener('click', () => {
+      const produtoInput = document.querySelector('.produto-input');
+      const precoInput = document.querySelector('.preço-input');
+      const priorityCheckbox = document.querySelector('.prioridade-checkbox');
+      const normalCheckbox = document.querySelector('.normal-checkbox');
+
+      produtoInput.value = item.produto;
+      precoInput.value = item.preco;
+      priorityCheckbox.checked = list === priority;
+      normalCheckbox.checked = list === toBuy;
+
+      const index = list.indexOf(item);
+      if (index !== -1) {
+        list.splice(index, 1);
+        showItems();
+      }
+    });
+    return editButton;
+  }
+
+  // Exibir os itens em cada lista
+  priority.forEach((item) => {
+    const listItem = document.createElement('li');
+    const removeButton = createRemoveButton(item, priority);
+    const editButton = createEditButton(item, priority);
+    listItem.textContent = item.produto;
+    listItem.appendChild(editButton);
+    listItem.appendChild(removeButton);
+    priorityList.appendChild(listItem);
+  });
+
+  toBuy.forEach((item) => {
+    const listItem = document.createElement('li');
+    const removeButton = createRemoveButton(item, toBuy);
+    const editButton = createEditButton(item, toBuy);
+    listItem.textContent = item.produto;
+    listItem.appendChild(editButton);
+    listItem.appendChild(removeButton);
+    toBuyList.appendChild(listItem);
+  });
+
+  bought.forEach((item) => {
+    const listItem = document.createElement('li');
+    const removeButton = createRemoveButton(item, bought);
+    const editButton = createEditButton(item, bought);
+    listItem.textContent = item.produto;
+    listItem.appendChild(editButton);
+    listItem.appendChild(removeButton);
+    boughtList.appendChild(listItem);
+  });
 };
 
-// Chamar a função para mostrar os itens iniciais
+//chama a função que mostra os items
 showItems();
