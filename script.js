@@ -43,6 +43,9 @@ function addItems() {
 
   // Chamar a função para mostrar os itens nas listas
   showItems();
+
+  // Salvar as listas no localStorage
+  saveListsToLocalStorage();
 }
 
 // Função para mostrar os itens nas respectivas listas
@@ -68,6 +71,7 @@ function showItems() {
       if (index !== -1) {
         list.splice(index, 1);
         showItems();
+        saveListsToLocalStorage(); // Salvar as listas no localStorage após remover o item
       }
     });
     return removeButton;
@@ -93,90 +97,111 @@ function showItems() {
       if (index !== -1) {
         list.splice(index, 1);
         showItems();
+        saveListsToLocalStorage(); // Salvar as listas no localStorage após editar o item
       }
     });
     return editButton;
   }
 
-  // Função para marcar um item como comprado
-function markAsBought(item, list) {
-  const index = list.indexOf(item);
-  if (index !== -1) {
-    list.splice(index, 1);
-    itemList.bought.push(item);
-    showItems();
-  }
-}
+  // Função para criar o botão de marcar como comprado
+  function createMarkAsBoughtButton(item, list) {
+    const markAsBoughtButton = document.createElement('input');
+    markAsBoughtButton.type = 'radio';
+    markAsBoughtButton.name = 'markAsBought';
+    markAsBoughtButton.addEventListener('click', () => {
+      const index = list.indexOf(item);
+      if (index !== -1) {
+        const boughtItem = list.splice(index, 1)[0];
+        itemList.bought.push(boughtItem);
+        showItems();
+        saveListsToLocalStorage(); // Salvar as listas no localStorage após marcar como comprado
+      };
+    });
+    return markAsBoughtButton;
+  };
 
-// Função para criar o botão de marcar como comprado
-function createMarkAsBoughtRadio(item, list) {
-  const markAsBoughtRadio = document.createElement('input');
-  markAsBoughtRadio.classList.add('mark-radio');
-  markAsBoughtRadio.type = 'radio';
-  markAsBoughtRadio.name = 'mark-as-bought';
-  markAsBoughtRadio.addEventListener('change', () => {
-    markAsBought(item, list);
+  // Exibir os itens em cada lista
+  priority.forEach((item) => {
+    const listItem = document.createElement('li');
+    const markAsBoughtButton = createMarkAsBoughtButton(item, priority);
+    const removeButton = createRemoveButton(item, priority);
+    const editButton = createEditButton(item, priority);
+    const itemText = document.createElement('span');
+    itemText.textContent = `${item.produto} - R$ ${parseFloat(item.preco).toFixed(2)}`;
+    listItem.appendChild(markAsBoughtButton);
+    listItem.appendChild(itemText);
+    listItem.appendChild(editButton);
+    listItem.appendChild(removeButton);
+    priorityList.appendChild(listItem);
   });
-  return markAsBoughtRadio;
-}
 
-// Exibir os itens em cada lista
-priority.forEach((item) => {
-  const listItem = document.createElement('li');
-  const removeButton = createRemoveButton(item, priority);
-  const editButton = createEditButton(item, priority);
-  const markAsBoughtRadio = createMarkAsBoughtRadio(item, priority);
-  const text = document.createElement('span');
-    const formattedPrice = parseFloat(item.preco).toFixed(2);
-  text.innerHTML = `${item.produto} - R$ ${formattedPrice}`;
-  
-  listItem.appendChild(markAsBoughtRadio);
-  listItem.appendChild(text);
-  listItem.appendChild(editButton);
-  listItem.appendChild(removeButton);
-  
-  priorityList.appendChild(listItem);
-});
+  toBuy.forEach((item) => {
+    const listItem = document.createElement('li');
+    const markAsBoughtButton = createMarkAsBoughtButton(item, toBuy);
+    const removeButton = createRemoveButton(item, toBuy);
+    const editButton = createEditButton(item, toBuy);
+    const itemText = document.createElement('span');
+    itemText.textContent = `${item.produto} - R$ ${parseFloat(item.preco).toFixed(2)}`;
+    listItem.appendChild(markAsBoughtButton);
+    listItem.appendChild(itemText);
+    listItem.appendChild(editButton);
+    listItem.appendChild(removeButton);
+    toBuyList.appendChild(listItem);
+  });
 
-toBuy.forEach((item) => {
-  const listItem = document.createElement('li');
-  const removeButton = createRemoveButton(item, toBuy);
-  const editButton = createEditButton(item, toBuy);
-  const markAsBoughtRadio = createMarkAsBoughtRadio(item, toBuy);
-  const text = document.createElement('span');
-  const formattedPrice = parseFloat(item.preco).toFixed(2);
-  text.innerHTML = `${item.produto} - R$ ${formattedPrice}`;
-
-  listItem.appendChild(markAsBoughtRadio);
-  listItem.appendChild(text);
-  listItem.appendChild(editButton);
-  listItem.appendChild(removeButton);
-
-
-  toBuyList.appendChild(listItem);
-});
-
-bought.forEach((item) => {
-  const listItem = document.createElement('li');
-  const removeButton = createRemoveButton(item, bought);
-  const editButton = createEditButton(item, bought);
-  const text = document.createElement('span');
-  const formattedPrice = parseFloat(item.preco).toFixed(2);
-  text.innerHTML = `${item.produto} - R$ ${formattedPrice}`;
-
-  listItem.appendChild(text);
-  listItem.appendChild(editButton);
-  listItem.appendChild(removeButton);
-  boughtList.appendChild(listItem);
-});
+  bought.forEach((item) => {
+    const listItem = document.createElement('li');
+    const removeButton = createRemoveButton(item, bought);
+    const editButton = createEditButton(item, bought);
+    const itemText = document.createElement('span');
+    itemText.textContent = `${item.produto} - R$ ${parseFloat(item.preco).toFixed(2)}`;
+    listItem.appendChild(itemText);
+    listItem.appendChild(editButton);
+    listItem.appendChild(removeButton);
+    boughtList.appendChild(listItem);
+  });
 };
 
-//chama a função que mostra os items
+
+// Função para salvar as listas no localStorage
+function saveListsToLocalStorage() {
+  localStorage.setItem('itemList', JSON.stringify(itemList));
+};
+
+// Função para carregar as listas do localStorage
+function loadListsFromLocalStorage() {
+  const storedItemList = localStorage.getItem('itemList');
+  if (storedItemList) {
+    itemList = JSON.parse(storedItemList);
+  };
+  showItems(); // Exibir os itens após carregar do localStorage
+};
+
+// Função para limpar as listas e o localStorage
+function clearLists() {
+  itemList = {
+    priority: [],
+    toBuy: [],
+    bought: []
+  };
+
+  // Limpar o localStorage
+  localStorage.removeItem('itemList');
+
+  // Exibir as listas vazias
+  showItems();
+}
+
+
+// Função para executar ao carregar a página
+window.addEventListener('load', function() {
+  loadListsFromLocalStorage();
+});
+
+// Função para executar antes de fechar a página
+window.addEventListener('beforeunload', function() {
+  saveListsToLocalStorage();
+});
+
+// Chamar a função para mostrar os itens nas listas
 showItems();
-
-const themeStyle = document.getElementById("themeSelect");
-const themeSelect = document.getElementById("sort-by");
-
-themeSelect.addEventListener("change", function (){
-  themeStyle.setAttribute("href", "css/" + this.value + ".css");
-})

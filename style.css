@@ -57,7 +57,7 @@ body{
     padding: 20px 20px;
     border-radius: 20px;
     float: left;
-    box-shadow: 0 15px 40px -20px #fe676e;
+    box-shadow: 0 15px 40px -20px #11111140;
 }
 
 .produto-label{
@@ -134,8 +134,24 @@ body{
     cursor: pointer;
 }
 
-svg{
-    fill: #5d7599;
+.clear-button{
+    color: #fe676e;
+    background-color: #f7f0c6;
+    font-size: 15px;
+    font-weight: 600;
+    min-width: 90%;
+    min-height: 20px;
+    margin-top: 25px;
+    border: none;
+    padding: 8px;
+    transition: all 0.4s;
+    border-radius: 3px
+}
+
+.clear-button:hover{
+    background-color: #fe676e;
+    color: #f7f0c6;
+    cursor: pointer;
 }
 
 .list-container{
@@ -149,6 +165,7 @@ svg{
     float: right;
     margin: 10px;
     border-radius: 20px;
+    box-shadow: 0 15px 40px -20px #11111140;
 }
 
 .checkboxes{
