@@ -134,22 +134,23 @@ svg{
 .checkboxes{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .priority{
+    justify-self: start;
     width: 300px;
     margin: 5px 20px;
-    display: flex;
-    flex-direction: column;
 }
 
 .not-bought{
+    justify-self: center;
     width: 300px;
     margin: 5px 20px;
 }
 
 .bought{
+    justify-self: end;
     margin: 5px 20px;
     width: 300px;
 }
@@ -164,6 +165,7 @@ li{
     background-color: #f7f0c6;
     color: #c73866;
     padding: 5px;
+    padding-left: 15px;
     border-radius: 3px;
     width: 90%;
     margin-bottom: 10px;

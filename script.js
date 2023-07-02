@@ -98,11 +98,34 @@ function showItems() {
     return editButton;
   }
 
+  // Função para marcar um item como comprado
+function markAsBought(item, list) {
+  const index = list.indexOf(item);
+  if (index !== -1) {
+    list.splice(index, 1);
+    itemList.bought.push(item);
+    showItems();
+  }
+}
+
+// Função para criar o botão de marcar como comprado
+function createMarkAsBoughtButton(item, list) {
+  const markAsBoughtButton = document.createElement('button');
+  markAsBoughtButton.innerText = 'Marcar como comprado';
+  markAsBoughtButton.classList.add('mark-as-bought-button');
+  markAsBoughtButton.addEventListener('click', () => {
+    markAsBought(item, list);
+  });
+  return markAsBoughtButton;
+}
+
   // Exibir os itens em cada lista
   priority.forEach((item) => {
     const listItem = document.createElement('li');
     const removeButton = createRemoveButton(item, priority);
     const editButton = createEditButton(item, priority);
+    const markButton = createMarkAsBoughtButton(item, priority);
+    listItem.appendChild(markButton)
     listItem.textContent = item.produto;
     listItem.appendChild(editButton);
     listItem.appendChild(removeButton);
@@ -113,6 +136,8 @@ function showItems() {
     const listItem = document.createElement('li');
     const removeButton = createRemoveButton(item, toBuy);
     const editButton = createEditButton(item, toBuy);
+    const markButton = createMarkAsBoughtButton(item, toBuy);
+    listItem.appendChild(markButton)
     listItem.textContent = item.produto;
     listItem.appendChild(editButton);
     listItem.appendChild(removeButton);
@@ -123,6 +148,8 @@ function showItems() {
     const listItem = document.createElement('li');
     const removeButton = createRemoveButton(item, bought);
     const editButton = createEditButton(item, bought);
+    const markButton = createMarkAsBoughtButton(item, bought);
+    listItem.appendChild(markButton)
     listItem.textContent = item.produto;
     listItem.appendChild(editButton);
     listItem.appendChild(removeButton);
