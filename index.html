@@ -7,22 +7,20 @@
     <title>Minha Lista de Compras</title>
 </head>
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-<link rel="stylesheet" href="style.css">
+<link id="themeSelect" rel="stylesheet" type="text/css" href="style.css">
 <body>
     <script src="script.js"></script>
     <div class="head">
         <h1>Minha Lista de Compras</h1>
         <h2>App by MMA Team</h2>
-        <div class="theme-select">
+        <form action="./" method="post" class="select-color">
             <p class="themes">Temas
                 <select class="select" id="sort-by">
-                    <option value="light">Tema claro</option>
-                    <option value="dark">Tema escuro</option>
-                    <option value="sunset">Tema sunset</option>
-                    <option value="forest">Tema floresta</option>
+                    <option value="light-theme">Tema claro</option>
+                    <option value="dark-theme">Tema escuro</option>
                 </select>
             </p>
-        </div>
+        </form>
     </div>
 
     <div class="input-container">

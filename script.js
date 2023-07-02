@@ -130,3 +130,10 @@ function showItems() {
 
 //chama a função que mostra os items
 showItems();
+
+const themeStyle = document.getElementById("themeSelect");
+const themeSelect = document.getElementById("sort-by");
+
+themeSelect.addEventListener("change", function (){
+  themeStyle.setAttribute("href", "css/" + this.value + ".css");
+})
