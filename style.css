@@ -267,10 +267,11 @@ li{
 }
 
 .mark-radio{
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     accent-color: var(--color-7);
-    margin-right: 8px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .mark-radio:hover{

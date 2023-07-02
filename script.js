@@ -107,6 +107,7 @@ function showItems() {
   function createMarkAsBoughtButton(item, list) {
     const markAsBoughtButton = document.createElement('input');
     markAsBoughtButton.type = 'radio';
+    markAsBoughtButton.classList = 'mark-radio'
     markAsBoughtButton.name = 'markAsBought';
     markAsBoughtButton.addEventListener('click', () => {
       const index = list.indexOf(item);
