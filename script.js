@@ -205,3 +205,9 @@ window.addEventListener('beforeunload', function() {
 
 // Chamar a função para mostrar os itens nas listas
 showItems();
+
+let theme = document.getElementById("theme-select");;
+
+function darkmode() {
+  document.body.classList.toggle("dark-mode");
+};

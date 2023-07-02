@@ -2,14 +2,34 @@
     font-family: lemon milk;
 }
 
+:root{
+    --color-1: #fd8d71;
+    --color-2: #ffbd71;
+    --color-3: #f7f0c6;
+    --color-4: #ffdca2;
+    --color-5: #f1ce95;
+    --color-6: #fe676e;
+    --color-7: #c73866;
+}
+
+.dark-mode{
+    --color-1: #211e46;
+    --color-2: #6e6189;
+    --color-3: #cbc9cc;
+    --color-4: #443a67;
+    --color-5: #9c90aa;
+    --color-6: #0a0b24;
+    --color-7: #000003;
+}
+
 .head{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #fd8d71;
-    color: #ffdca2;
+    background-color: var(--color-1);
+    color: var(--color-3);
     border-radius: 0px 0px 20px 20px;
 }
 
@@ -20,36 +40,38 @@
 }
 
 .app-header{
-    color: #ffbd71;
-}
-
-.select{
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
-    background-color: #f7f0c6;
-}
-
-.select:hover{
-    cursor: pointer;
-}
-
-body{
-    background-color: #ffdca2;
+    color: var(--color-2);
 }
 
 .select-color{
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    top: 10px;
+    background-color: transparent;
+    border: none;
+    color: var(--color-3);
+    top: 20px;
     right: 20px;
 }
 
+.select-color:hover{
+    cursor: pointer;
+}
+
+svg{
+    fill: var(--color-3);
+}
+
+body{
+    background-color: var(--color-4);
+}
+
 .input-container{
-    color: #c73866;
+    color: var(--color-7);
     font-size: 15px;
     font-weight: 500;
     margin: 10px;
-    background-color: #ffbd71;
+    background-color: var(--color-2);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +91,7 @@ body{
 }
 
 .produto-input{
-    background-color: #f7f0c6;
+    background-color: var(--color-3);
     min-width: 90%;
     min-height: 20px;
     border: none;
@@ -78,15 +100,15 @@ body{
 }
 
 .produto-input::placeholder{
-    color: #f1ce95;
+    color: var(--color-5);
 }
 
 .preço-input::placeholder{
-    color: #f1ce95;
+    color: var(--color-5);
 }
 
 .preço-input{
-    background-color: #f7f0c6;
+    background-color: var(--color-3);
     min-width: 90%;
     min-height: 20px;
     border: none;
@@ -97,7 +119,7 @@ body{
 .prioridade-checkbox{
     width: 20px;
     height: 20px;
-    accent-color: #c73866;
+    accent-color: var(--color-7);
 }
 
 .prioridade-checkbox:hover{
@@ -107,7 +129,7 @@ body{
 .normal-checkbox{
     width: 20px;
     height: 20px;
-    accent-color: #c73866;
+    accent-color: var(--color-7);
 }
 
 .normal-checkbox:hover{
@@ -115,8 +137,8 @@ body{
 }
 
 .add-button{
-    color: #fe676e;
-    background-color: #f7f0c6;
+    color: var(--color-6);
+    background-color: var(--color-3);
     font-size: 15px;
     font-weight: 600;
     min-width: 90%;
@@ -129,19 +151,19 @@ body{
 }
 
 .add-button:hover{
-    background-color: #fe676e;
-    color: #f7f0c6;
+    background-color: var(--color-6);
+    color: var(--color-3);
     cursor: pointer;
 }
 
 .clear-button{
-    color: #fe676e;
-    background-color: #f7f0c6;
+    color: var(--color-6);
+    background-color: var(--color-3);
     font-size: 15px;
     font-weight: 600;
     min-width: 90%;
     min-height: 20px;
-    margin-top: 25px;
+    margin-top: 15px;
     border: none;
     padding: 8px;
     transition: all 0.4s;
@@ -149,14 +171,14 @@ body{
 }
 
 .clear-button:hover{
-    background-color: #fe676e;
-    color: #f7f0c6;
+    background-color: var(--color-6);
+    color: var(--color-3);
     cursor: pointer;
 }
 
 .list-container{
-    color: #fe676e;
-    background-color: #ffbd71;
+    color: var(--color-6);
+    background-color: var(--color-2);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -199,8 +221,8 @@ body{
 }
 
 li{
-    background-color: #f7f0c6;
-    color: #c73866;
+    background-color: var(--color-3);
+    color: var(--color-7);
     padding: 5px;
     padding-left: 15px;
     border-radius: 3px;
@@ -209,9 +231,9 @@ li{
 }
 
 .edit-button{
-    color: #fe676e;
-    background-color: #f7f0c6;
-    border: #fe676e 3px;
+    color: var(--color-6);
+    background-color: var(--color-3);
+    border: var(--color-6) 3px;
     font-size: 14px;
     font-weight: 500;
     padding: 7px;
@@ -221,15 +243,15 @@ li{
 }
 
 .edit-button:hover{
-    color: #f7f0c6;
-    background-color: #fe676e;
+    color: var(--color-3);
+    background-color: var(--color-6);
     cursor: pointer;
 }
 
 .remove-button{
-    color: #fe676e;
-    background-color: #f7f0c6;
-    border: #fe676e 3px;
+    color: var(--color-6);
+    background-color: var(--color-3);
+    border: var(--color-6) 3px;
     font-size: 14px;
     font-weight: 500;
     padding: 7px;
@@ -239,15 +261,15 @@ li{
 }
 
 .remove-button:hover{
-    color: #f7f0c6;
-    background-color: #fe676e;
+    color: var(--color-3);
+    background-color: var(--color-6);
     cursor: pointer;
 }
 
 .mark-radio{
     width: 20px;
     height: 20px;
-    accent-color: #c73866;
+    accent-color: var(--color-7);
     margin-right: 8px;
 }
 
