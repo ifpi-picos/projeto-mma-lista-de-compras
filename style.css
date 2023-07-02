@@ -44,7 +44,7 @@ body{
     flex-direction: column;
     justify-content: center;
     width: 24%;
-    padding: 20px 15px;
+    padding: 20px 20px;
     border-radius: 20px;
     float: left;
     box-shadow: 0 15px 40px -20px #fe676e;
@@ -156,12 +156,51 @@ svg{
 
 .item-list{
     list-style-type: none;
+    width: 90%;
+    padding: 0;
 }
 
 li{
     background-color: #f7f0c6;
     color: #c73866;
-    padding: 10px;
+    padding: 5px;
     border-radius: 3px;
     width: 90%;
+    margin-bottom: 10px;
+}
+
+.edit-button{
+    color: #fe676e;
+    background-color: #f7f0c6;
+    border: #fe676e 3px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px;
+    border-radius: 3px;
+    margin: 0 5px;
+    transition: all 0.4s;
+}
+
+.edit-button:hover{
+    color: #f7f0c6;
+    background-color: #fe676e;
+    cursor: pointer;
+}
+
+.remove-button{
+    color: #fe676e;
+    background-color: #f7f0c6;
+    border: #fe676e 3px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px;
+    border-radius: 3px;
+    margin: 0 5px;
+    transition: all 0.4s;
+}
+
+.remove-button:hover{
+    color: #f7f0c6;
+    background-color: #fe676e;
+    cursor: pointer;
 }

@@ -62,6 +62,7 @@ function showItems() {
   function createRemoveButton(item, list) {
     const removeButton = document.createElement('button');
     removeButton.innerText = 'Remover';
+    removeButton.classList.add('remove-button');
     removeButton.addEventListener('click', () => {
       const index = list.indexOf(item);
       if (index !== -1) {
@@ -72,10 +73,11 @@ function showItems() {
     return removeButton;
   }
 
-  // Função para criar o botão de reedição de item
+  // Função para criar o botão de edição de item
   function createEditButton(item, list) {
     const editButton = document.createElement('button');
     editButton.innerText = 'Editar';
+    editButton.classList.add('edit-button');
     editButton.addEventListener('click', () => {
       const produtoInput = document.querySelector('.produto-input');
       const precoInput = document.querySelector('.preço-input');
