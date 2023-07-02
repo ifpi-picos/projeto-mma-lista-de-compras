@@ -13,6 +13,16 @@
     border-radius: 0px 0px 20px 20px;
 }
 
+.app-title{
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.app-header{
+    color: #ffbd71;
+}
+
 .select{
     padding: 10px;
     border-radius: 20px;
@@ -87,11 +97,21 @@ body{
 .prioridade-checkbox{
     width: 20px;
     height: 20px;
+    accent-color: #c73866;
+}
+
+.prioridade-checkbox:hover{
+    cursor: pointer;
 }
 
 .normal-checkbox{
     width: 20px;
     height: 20px;
+    accent-color: #c73866;
+}
+
+.normal-checkbox:hover{
+    cursor: pointer;
 }
 
 .add-button{
@@ -124,7 +144,7 @@ svg{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     width: 70%;
     float: right;
     margin: 10px;
@@ -204,5 +224,16 @@ li{
 .remove-button:hover{
     color: #f7f0c6;
     background-color: #fe676e;
+    cursor: pointer;
+}
+
+.mark-radio{
+    width: 20px;
+    height: 20px;
+    accent-color: #c73866;
+    margin-right: 8px;
+}
+
+.mark-radio:hover{
     cursor: pointer;
 }

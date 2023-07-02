@@ -109,52 +109,66 @@ function markAsBought(item, list) {
 }
 
 // Função para criar o botão de marcar como comprado
-function createMarkAsBoughtButton(item, list) {
-  const markAsBoughtButton = document.createElement('button');
-  markAsBoughtButton.innerText = 'Marcar como comprado';
-  markAsBoughtButton.classList.add('mark-as-bought-button');
-  markAsBoughtButton.addEventListener('click', () => {
+function createMarkAsBoughtRadio(item, list) {
+  const markAsBoughtRadio = document.createElement('input');
+  markAsBoughtRadio.classList.add('mark-radio');
+  markAsBoughtRadio.type = 'radio';
+  markAsBoughtRadio.name = 'mark-as-bought';
+  markAsBoughtRadio.addEventListener('change', () => {
     markAsBought(item, list);
   });
-  return markAsBoughtButton;
+  return markAsBoughtRadio;
 }
 
-  // Exibir os itens em cada lista
-  priority.forEach((item) => {
-    const listItem = document.createElement('li');
-    const removeButton = createRemoveButton(item, priority);
-    const editButton = createEditButton(item, priority);
-    const markButton = createMarkAsBoughtButton(item, priority);
-    listItem.appendChild(markButton)
-    listItem.textContent = item.produto;
-    listItem.appendChild(editButton);
-    listItem.appendChild(removeButton);
-    priorityList.appendChild(listItem);
-  });
+// Exibir os itens em cada lista
+priority.forEach((item) => {
+  const listItem = document.createElement('li');
+  const removeButton = createRemoveButton(item, priority);
+  const editButton = createEditButton(item, priority);
+  const markAsBoughtRadio = createMarkAsBoughtRadio(item, priority);
+  const text = document.createElement('span');
+    const formattedPrice = parseFloat(item.preco).toFixed(2);
+  text.innerHTML = `${item.produto} - R$ ${formattedPrice}`;
+  
+  listItem.appendChild(markAsBoughtRadio);
+  listItem.appendChild(text);
+  listItem.appendChild(editButton);
+  listItem.appendChild(removeButton);
+  
+  priorityList.appendChild(listItem);
+});
 
-  toBuy.forEach((item) => {
-    const listItem = document.createElement('li');
-    const removeButton = createRemoveButton(item, toBuy);
-    const editButton = createEditButton(item, toBuy);
-    const markButton = createMarkAsBoughtButton(item, toBuy);
-    listItem.appendChild(markButton)
-    listItem.textContent = item.produto;
-    listItem.appendChild(editButton);
-    listItem.appendChild(removeButton);
-    toBuyList.appendChild(listItem);
-  });
+toBuy.forEach((item) => {
+  const listItem = document.createElement('li');
+  const removeButton = createRemoveButton(item, toBuy);
+  const editButton = createEditButton(item, toBuy);
+  const markAsBoughtRadio = createMarkAsBoughtRadio(item, toBuy);
+  const text = document.createElement('span');
+  const formattedPrice = parseFloat(item.preco).toFixed(2);
+  text.innerHTML = `${item.produto} - R$ ${formattedPrice}`;
 
-  bought.forEach((item) => {
-    const listItem = document.createElement('li');
-    const removeButton = createRemoveButton(item, bought);
-    const editButton = createEditButton(item, bought);
-    const markButton = createMarkAsBoughtButton(item, bought);
-    listItem.appendChild(markButton)
-    listItem.textContent = item.produto;
-    listItem.appendChild(editButton);
-    listItem.appendChild(removeButton);
-    boughtList.appendChild(listItem);
-  });
+  listItem.appendChild(markAsBoughtRadio);
+  listItem.appendChild(text);
+  listItem.appendChild(editButton);
+  listItem.appendChild(removeButton);
+
+
+  toBuyList.appendChild(listItem);
+});
+
+bought.forEach((item) => {
+  const listItem = document.createElement('li');
+  const removeButton = createRemoveButton(item, bought);
+  const editButton = createEditButton(item, bought);
+  const text = document.createElement('span');
+  const formattedPrice = parseFloat(item.preco).toFixed(2);
+  text.innerHTML = `${item.produto} - R$ ${formattedPrice}`;
+
+  listItem.appendChild(text);
+  listItem.appendChild(editButton);
+  listItem.appendChild(removeButton);
+  boughtList.appendChild(listItem);
+});
 };
 
 //chama a função que mostra os items

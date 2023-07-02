@@ -11,8 +11,8 @@
 <body>
     <script src="script.js"></script>
     <div class="head">
-        <h1>Minha Lista de Compras</h1>
-        <h2>App by MMA Team</h2>
+        <h1 class="app-title">Minha Lista de Compras</h1>
+        <h2 class="app-header">App by MMA Team</h2>
         <form action="./" method="post" class="select-color">
             <p class="themes">Temas
                 <select class="select" id="sort-by">
@@ -33,10 +33,10 @@
         <p>O produto é:</p>
         <div class="checkboxes">
             <label for="prioridade" class="prioridade-label">Prioridade</label>
-            <input class="prioridade-checkbox" type="radio" id="prioridade">
+            <input name="option" class="prioridade-checkbox" type="radio" id="prioridade">
 
             <label for="normal" class="normal-label">Normal</label>
-            <input class="normal-checkbox" type="radio" id="normal">
+            <input name="option" class="normal-checkbox" type="radio" id="normal">
             <br>
         </div>
         <button class="add-button" type="submit" onclick="addItems()">Adicionar Item</button>
